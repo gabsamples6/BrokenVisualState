@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="BrokenVisualState.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -7,27 +7,43 @@
     x:DataType="brokenVisualState:MainPageViewModel">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30,0" Spacing="25">
-            <Image
-                Aspect="AspectFit"
-                HeightRequest="185"
-                Source="dotnet_bot.png" />
+        <Grid
+            Padding="20"
+            ColumnDefinitions="*, Auto, *"
+            RowDefinitions="*, Auto, Auto, *, Auto"
+            VerticalOptions="Fill">
 
-            <Label
-                SemanticProperties.HeadingLevel="Level1"
-                Style="{StaticResource Headline}"
-                Text="Hello, World!" />
+            <VerticalStackLayout
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Spacing="20"
+                VerticalOptions="Center">
 
-            <Entry Text="{Binding Username}" />
-            <Entry Text="{Binding Password}" />
+                <Entry
+                    HorizontalOptions="Center"
+                    Placeholder="Enter username"
+                    Text="{Binding Username}"
+                    WidthRequest="250" />
+
+                <Entry
+                    HorizontalOptions="Center"
+                    IsPassword="True"
+                    Placeholder="Enter password"
+                    Text="{Binding Password}"
+                    WidthRequest="250" />
+
+            </VerticalStackLayout>
 
             <Button
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="0,20,0,0"
                 HorizontalOptions="Fill"
                 IsEnabled="{Binding CanLogin}"
-                Text="Click me" />
-
-
-        </VerticalStackLayout>
+                Text="Login" />
+        </Grid>
     </ScrollView>
 
 </ContentPage>
